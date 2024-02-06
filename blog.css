@@ -1,0 +1,84 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'noto-sans-font', sans-serif;
+}
+
+body {
+    background-color: rgb(61, 60, 60);
+    color: white;
+}
+
+.container{
+    padding: 1% 10%;
+}
+
+.button1{
+    display: inline-block;
+    margin: 5% auto;
+    width: fit-content;
+    border: 0.1% solid #0bc4dc;
+    padding: 1.2% 4%;
+    border-radius: 0.7%;
+    text-decoration: none;
+    color: white;
+    background-color: black;
+}
+
+.button1:hover{
+    background-color: #0bc4dc;
+    transition: 0.5s;
+}
+
+form{
+    width: 100%;
+}
+
+form textarea, input{
+    width: 100%;
+    margin: 1% 0;
+    padding: 1%;
+    border: 0.1% solid #0bdccb;
+    border-radius: 0.5%;
+    background-color: #222121;
+    color: white;
+}
+
+.like{
+    display: flex;
+}
+
+.like p{
+    margin: 0% 1%;
+}
+
+.comments{
+    height: fit-content;
+    padding: 1%;
+}
+
+.comments .comment{
+    margin: 1% 0;
+    border: 0.1% solid #3e3e3e;
+    padding: 0.5%;
+    background-color: #222121;
+}
+
+.user{
+    color: #0ba1dc;
+}
+
+@media (max-width: 600px){
+    .container{
+        padding: 1% 5%;
+    }
+    
+    .button1{
+        margin: 2% auto;
+    }
+    
+    form textarea, input{
+        width: 100%;
+    }
+}

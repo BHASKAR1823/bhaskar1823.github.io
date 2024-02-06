@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title></title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="blog.css">
+    <script src="https://kit.fontawesome.com/e54dab7c3a.js" crossorigin="anonymous"></script>
+</head>
+<body>
+    <div class="container">
+        <div class="content">
+            <h1>Bahubali The Beginning</h1>
+            <br><br>
+            <p>"Bahubali: The Beginning" is an epic historical fiction film directed by S.S. Rajamouli. The movie takes us on a thrilling journey through the fictional kingdom of Mahishmati, where two brothers, Amarendra Baahubali and Bhallaladeva, compete for the throne. The film is known for its grand scale and breathtaking visual effects, which bring the world of Mahishmati to life.
+                <br><br>
+                The movie captivates audiences with its compelling storyline, filled with political intrigue, family drama, and intense battle sequences. The characters are well-developed, and the performances by the cast, including Prabhas, Rana Daggubati, and Anushka Shetty, are commendable. "Bahubali: The Beginning" also features a mesmerizing soundtrack composed by M.M. Keeravani, which adds depth and emotion to the narrative.</p>
+        </div>
+    </div>
+    <div class="container">
+        <div class="like">
+            <i class="fa-regular fa-heart" id="icon"></i>
+            <p id="likes">0</p>
+            <br>
+        </div>
+        <div class="comment">
+            <form id="commentForm">
+                <input type="text" name="name" placeholder="Name....">
+                <br>
+                <textarea name="comment" rows="6" placeholder="Your comment...."></textarea>
+                <br>
+                <button type="submit" class="button1">Comment</button>
+            </form>
+        </div>
+    </div>
+    <div class="container">
+        <div class="comments" id="commentsContainer">
+        </div>
+    </div>
+
+<script>
+    var icon = document.getElementById('icon');
+    var likesCount = document.getElementById('likes');
+    var likeCount = 0;
+
+    icon.onclick = function () {
+        document.body.classList.toggle('liked');
+        if (document.body.classList.contains("liked")) {
+            icon.className = 'fa-solid fa-heart';
+            likeCount++;
+        } else {
+            icon.className = 'fa-regular fa-heart';
+            likeCount--;
+        }
+        likesCount.textContent = likeCount;
+    }
+
+    document.getElementById('commentForm').addEventListener('submit', function (event) {
+        event.preventDefault();
+
+        var name = this.elements.name.value;
+        var commentText = this.elements.comment.value;
+
+        if (name && commentText) {
+            var commentContainer = document.getElementById('commentsContainer');
+            var newComment = document.createElement('div');
+            newComment.className = 'comment';
+            newComment.innerHTML = '<h3>' + name + '</h3><p>' + commentText + '</p>';
+            commentContainer.appendChild(newComment);
+
+            var commentData = name + ': ' + commentText + '\n';
+            fetch('comments.txt', {
+                method: 'POST',
+                body: commentData,
+                headers: {
+                    'Content-Type': 'text/plain'
+                }
+            });
+
+            this.reset();
+        }
+    });
+
+    fetch()
+        .then(response => response.text())
+        .then(data => {
+            var commentContainer = document.getElementById('commentsContainer');
+            var comments = data.split('\n');
+            comments.forEach(comment => {
+                if (comment.trim() !== '') {
+                    var [name, commentText] = comment.split(':');
+                    var newComment = document.createElement('div');
+                    newComment.className = 'comment';
+                    newComment.innerHTML = '<h3>' + name + '</h3><p>' + commentText + '</p>';
+                    commentContainer.appendChild(newComment);
+                }
+            });
+        });
+</script>
+
+<div class="container">
+    <div class="content">
+        <h1>INTERSTELLAR</h1><br><br>
+        <p>Interstellar is a science fiction film directed by Christopher Nolan. The movie takes place in a future where Earth is facing an environmental crisis, and a group of astronauts embarks on a journey through a wormhole to find a new habitable planet for humanity. The film explores themes of time dilation, space exploration, and the power of love and human connection.
+
+           <br><br> The visual effects in Interstellar are stunning, with breathtaking scenes of space travel and otherworldly landscapes. The film also features a stellar cast, including Matthew McConaughey, Anne Hathaway, and Jessica Chastain, who deliver powerful performances that bring the emotional depth of the story to life. Interstellar is a thought-provoking and visually captivating film that pushes the boundaries of science fiction storytelling.</p>
+    </div>
+</div>
+<div class="container">
+    <div class="like">
+        <i class="fa-regular fa-heart" id="icon"></i>
+        <p id="likes">0</p>
+        <br>
+    </div>
+    <div class="comment">
+        <form id="commentForm">
+            <input type="text" name="name" placeholder="Name.....">
+            <br>
+            <textarea name="comment" rows="6" placeholder="Your Comment....."></textarea>
+            <br>
+            <button type="submit" class="button1">Comment</button>
+        </form>
+    </div>
+</div>
+<div class="container">
+    <div class="comments" id="commentsContainer">
+    </div>
+</div>
+
+<script>
+var icon = document.getElementById('icon');
+var likesCount = document.getElementById('likes');
+var likeCount = 0;
+
+icon.onclick = function () {
+    document.body.classList.toggle('liked');
+    if (document.body.classList.contains("liked")) {
+        icon.className = 'fa-solid fa-heart';
+        likeCount++;
+    } else {
+        icon.className = 'fa-regular fa-heart';
+        likeCount--;
+    }
+    likesCount.textContent = likeCount;
+}
+
+document.getElementById('commentForm').addEventListener('submit', function (event) {
+    event.preventDefault();
+
+    var name = this.elements.name.value;
+    var commentText = this.elements.comment.value;
+
+    if (name && commentText) {
+        var commentContainer = document.getElementById('commentsContainer');
+        var newComment = document.createElement('div');
+        newComment.className = 'comment';
+        newComment.innerHTML = '<h3>' + name + '</h3><p>' + commentText + '</p>';
+        commentContainer.appendChild(newComment);
+
+        var commentData = name + ': ' + commentText + '\n';
+        fetch('comments.txt', {
+            method: 'POST',
+            body: commentData,
+            headers: {
+                'Content-Type': 'text/plain'
+            }
+        });
+
+        this.reset();
+    }
+});
+
+fetch()
+    .then(response => response.text())
+    .then(data => {
+        var commentContainer = document.getElementById('commentsContainer');
+        var comments = data.split('\n');
+        comments.forEach(comment => {
+            if (comment.trim() !== '') {
+                var [name, commentText] = comment.split(':');
+                var newComment = document.createElement('div');
+                newComment.className = 'comment';
+                newComment.innerHTML = '<h3>' + name + '</h3><p>' + commentText + '</p>';
+                commentContainer.appendChild(newComment);
+            }
+        });
+    });
+</script>
+
+
+    <script src="blog.js" async defer></script>
+</body>
+</html>
